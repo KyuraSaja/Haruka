@@ -786,6 +786,52 @@ case 'jadwalsholat':{
     break
 
 //group
+case 'jadian':
+	jds = []
+	jdii = groupMembers
+	koss = groupMembers
+	akuu = jdii[Math.floor(Math.random() * jdii.length)]
+	diaa = koss[Math.floor(Math.random() * koss.length)]
+	teks = `Selamat kalian berdua dijodohinn\n@${akuu.jid.split('@')[0]}  (♥️ ) @${diaa.jid.split('@')[0]} \npj nya kak buat beli kopi ama piscok:D`
+	jds.push(akuu.jid)
+	jds.push(diaa.jid)
+	mentions(teks, jds, true)
+	break
+case 'group':case 'gc': 
+        if (!isGroup) return reply(lang.onlygc());
+        if (!isGroupAdmins && !isBotGroupAdmins) return reply(lang.onlygcAdmin());
+        if (args[0] == "open") {
+        await haruka.groupSettingChange(from, GroupSettingChange.messageSend, false)
+					reply('S U C C E S S  O P E N I N G  G R O U P')
+        } else if (args[0] == "close") {
+          await haruka.groupSettingChange(from, GroupSettingChange.messageSend, true)
+					reply('S U C C E S S  C L O S I N G  G R O U P')
+        } else if (!q) {
+        	    var ini_gopayy =`Halo @${sender.split("@")[0]} Gunakan ${prefix + command } Open / Close jika button tidak merespon`
+                var buttonss = [
+{buttonId: 'group open', buttonText:{displayText: 'Open'}, type: 1},
+{buttonId: 'group close', buttonText:{displayText: 'Close'}, type: 1}
+]
+
+buttonMessagee = {
+contentText: ini_gopayy,
+footerText: `© ${ownername}` ,
+buttons: buttonss,
+headerType: 1
+}
+haruka.sendMessage(from,  buttonMessagee, MessageType.buttonsMessage,{
+        caption: 'Botwea ©2K22',
+        "contextInfo": {
+            text: 'hi',
+            "forwardingScore": 1000000000,
+            isForwarded: false,
+            sendEphemeral: true,
+            "mentionedJid" : [sender]
+            },
+			quoted: ftroli,sendEphemeral: true 
+			})
+        }
+		break
 case 'daftar': case 'verify': case 'verif':
 			if (isHaruka) return  reply(lang.regis())
 			try {
